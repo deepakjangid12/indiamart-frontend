@@ -9,7 +9,10 @@ const Category = ({ categories }) => {
             <div className="categories">
                 {categories?.data?.map((item) => (
                     <div key={item.id} className="category" onClick={()=>navigate(`/category/${item.id}`)}>
-                        <img src={process.env.REACT_app_DEV_URL + item.attributes.img.data.attributes.url} alt="categoryhe" />
+                        <img src={item.attributes.img.data.attributes.url} alt="categoryhe" />
+
+                        {/* <img src={`https://res.cloudinary.com/dh4gjirh9/image/upload/${item.attributes.img.data.attributes.url}`} alt="categoryhe" /> */}
+                        {/* {process.env.REACT_app_DEV_URL + item.attributes.img.data.attributes.url} */}
                     </div>
                 ))}
             </div>

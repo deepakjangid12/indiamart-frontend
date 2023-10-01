@@ -1,5 +1,5 @@
 import "./SingleProduct.scss";
-import { useState ,useContext } from "react";
+import { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch"
 import RelatedProducts from "./RelatedProducts/RelatedProducts"
@@ -9,23 +9,23 @@ import { Context } from "../../utils/context";
 
 const SingleProduct = () => {
     const { id } = useParams();
-    const {data}=useFetch(`/api/products?populate=*&[filters][id]=${id}`);
-    const[quantity,setQuantity]=useState(1);
-    const { handleAddToCart }=useContext(Context);
+    const { data } = useFetch(`/api/products?populate=*&[filters][id]=${id}`);
+    const [quantity, setQuantity] = useState(1);
+    const { handleAddToCart } = useContext(Context);
 
-    const increment=()=>{
-        setQuantity((prevState)=> prevState +1);
+    const increment = () => {
+        setQuantity((prevState) => prevState + 1);
     }
-    const decrement=()=>{
-        if(quantity > 1){
-        setQuantity((prevState)=> prevState -1);
+    const decrement = () => {
+        if (quantity > 1) {
+            setQuantity((prevState) => prevState - 1);
         }
-        else{
+        else {
             setQuantity(1)
         }
     }
 
-    if(!data) return;
+    if (!data) return;
     const product = data.data[0].attributes;
     return (
         <div className="single-product-main-content">
@@ -33,8 +33,12 @@ const SingleProduct = () => {
             <div className="layout">
                 <div className="single-product-page">
                     <div className="left">
-                        <img src={process.env.REACT_app_DEV_URL + product.img.data[0].attributes.url} alt="singleprod" />
+                        <img src={product.img.data[0].attributes.url} alt="singleprod" />
                     </div>
+
+                    {/* <div className="left">
+                        <img src={process.env.REACT_app_DEV_URL + product.img.data[0].attributes.url} alt="singleprod" />
+                    </div> */}
                     <div className="right">
                         <span className="name">{product.title}</span>
                         <span className="price">&#8377;{product.price}</span>
@@ -47,8 +51,9 @@ const SingleProduct = () => {
                                 <span onClick={increment}>+</span>
                             </div>
 
-                            <button className="add-to-cart-button"  onClick={() => {handleAddToCart(data.data[0], quantity);
-                            setQuantity(1);
+                            <button className="add-to-cart-button" onClick={() => {
+                                handleAddToCart(data.data[0], quantity);
+                                setQuantity(1);
                             }}>
                                 <FaCartPlus size={20} />
                                 ADD TO CART
