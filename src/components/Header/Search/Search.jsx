@@ -35,9 +35,13 @@ const Search = ({ setshowSearch }) => {
                         navigate("/product/" + item.id)
                         setshowSearch(false)
                     }}>
-                        <div className="img-container">
+{/*                         <div className="img-container">
                             <img src={process.env.REACT_app_DEV_URL + item.attributes.img.data[0].attributes.url}  alt="searchimg" />
-                        </div>
+                        </div> */}
+                        <div className="img-container">
+    <img src={item.attributes.img.data[0].attributes.url} alt="searchimg" />
+</div>
+
                         <div className="prod-details">
                             <span className="name">{item.attributes.title}</span>
                             <span className="desc">{item.attributes.dec}</span>
