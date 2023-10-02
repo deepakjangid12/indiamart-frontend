@@ -9,9 +9,12 @@ const CartItem = () => {
         <div className="cart-products">
                 {cartItems.map(item=>(
             <div key={item.id} className="cart-product">
-                <div className="img-container">
+{/*                 <div className="img-container">
                     <img src={process.env.REACT_app_DEV_URL + item.attributes.img.data[0].attributes.url} alt="cartitemimg" />   
-                </div>
+                </div> */}
+                 <div className="img-container">
+                        <img src={item.attributes.img.data[0].attributes.url} alt="cartitemimg" />
+                    </div>
                 <div className="prod-details">
                     <span className="Product name">{item.attributes.title}</span>
                     <MdClose className="close-btn" onClick={()=>handleRemoveFromCart(item)} />
