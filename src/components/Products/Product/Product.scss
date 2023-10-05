@@ -2,10 +2,11 @@
 .product-card{
     // 2 items bec of 50 width
     width: calc(50% - 5px);
-    margin-bottom: 20px;
+    margin-bottom: 52px;
     @include md{
         // 4 items bec of 25 width
         width: calc(25% - 15px);
+        margin-bottom: 1px;
     }
     .thumbnail{
         width: 100%;
